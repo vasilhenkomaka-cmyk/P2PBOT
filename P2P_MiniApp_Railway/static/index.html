@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>P2P Щоденник</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <h1>P2P Щоденник</h1>
+      <div class="balance-badge" id="balanceBadge">— USDT</div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="today">Сьогодні</button>
+      <button class="tab" data-tab="add">+ Угода</button>
+      <button class="tab" data-tab="stats">Статистика</button>
+      <button class="tab" data-tab="history">Історія</button>
+    </nav>
+
+    <!-- TODAY -->
+    <section id="tab-today" class="tab-content active">
+      <div class="cards">
+        <div class="card profit">
+          <div class="card-label">Прибуток сьогодні</div>
+          <div class="card-value" id="todayProfit">0 ₴</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Угод</div>
+          <div class="card-value" id="todayDeals">0</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Купив</div>
+          <div class="card-value small" id="todayBuy">0 USDT</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Продав</div>
+          <div class="card-value small" id="todaySell">0 USDT</div>
+        </div>
+      </div>
+
+      <h3 class="section-title">Останні угоди сьогодні</h3>
+      <div id="todayList" class="deal-list">
+        <div class="empty">Поки немає угод</div>
+      </div>
+    </section>
+
+    <!-- ADD DEAL -->
+    <section id="tab-add" class="tab-content">
+      <form id="dealForm" class="form">
+        <div class="type-switch">
+          <button type="button" class="type-btn active" data-type="buy">🟢 Купівля</button>
+          <button type="button" class="type-btn" data-type="sell">🔴 Продаж</button>
+        </div>
+
+        <label>
+          Курс (₴)
+          <input type="number" id="rate" step="0.01" min="0.01" placeholder="46.50" required />
+        </label>
+
+        <label>
+          Кількість USDT
+          <input type="number" id="amount" step="0.01" min="0.01" placeholder="600" required />
+        </label>
+
+        <label>
+          Комісія %
+          <input type="number" id="fee" step="0.01" min="0" max="10" value="0" />
+        </label>
+
+        <label>
+          Примітка
+          <input type="text" id="note" maxlength="200" placeholder="Необовʼязково" />
+        </label>
+
+        <div class="preview" id="preview">
+          Сума: — ₴
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">Зберегти угоду</button>
+      </form>
+    </section>
+
+    <!-- STATS -->
+    <section id="tab-stats" class="tab-content">
+      <div class="cards">
+        <div class="card profit full">
+          <div class="card-label">Загальний прибуток</div>
+          <div class="card-value" id="totalProfit">0 ₴</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Всього угод</div>
+          <div class="card-value" id="totalDeals">0</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Баланс USDT</div>
+          <div class="card-value small" id="totalBalance">0</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Сер. купівля</div>
+          <div class="card-value small" id="avgBuy">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Сер. продаж</div>
+          <div class="card-value small" id="avgSell">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Спред</div>
+          <div class="card-value small" id="spread">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="tab-history" class="tab-content">
+      <div id="historyList" class="deal-list">
+        <div class="empty">Завантаження...</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
