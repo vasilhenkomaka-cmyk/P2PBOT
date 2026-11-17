@@ -25,7 +25,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from database import init_db, add_deal, get_deals, get_deals_today, get_stats, delete_deal
 
 # ================== CONFIG ==================
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+BOT_TOKEN = os.getenv("9028356671:AAGcRfa1a-uARerO23nbW6b0kDxOKZvSmuc", "")
 WEBAPP_URL = os.getenv("WEBAPP_URL", "")  # наприклад https://your-app.up.railway.app
 # ===========================================
 
